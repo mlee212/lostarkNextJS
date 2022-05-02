@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./table.module.css"
 import {Cell} from "./cell.js"
 
@@ -8,12 +8,18 @@ import {Cell} from "./cell.js"
 function FullTable() {
     const [checkboxes, setchecks] = useState(Array(3).fill(false))
 
+    useEffect(() => {
+            localStorage.setItem('userID', JSON.stringify(checkboxes))
+        }, [checkboxes])
+
     const handleClick = (i) => {
         const cellClone = checkboxes.slice();
         cellClone[i] = !cellClone[i];
         setchecks(cellClone);
         console.log("before:", cellClone)
         console.log("ok buddy")
+        var myjsonStr = JSON.stringify(cellClone)
+        console.log(myjsonStr)
         
     }
 
