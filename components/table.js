@@ -22,8 +22,13 @@ function FullTable() {
       
 
     useEffect(() => {
-        
-        setchecks(JSON.parse(localStorage.getItem('userID')))
+        var initStor = JSON.parse(localStorage.getItem('userID'));
+        if (!initStor) {
+            setchecks(checkboxes);
+        }
+        else {
+            setchecks(initStor);
+        }
         
     }, [])
     useEffect(() => {
