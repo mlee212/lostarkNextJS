@@ -7,7 +7,7 @@ import {Cell} from "./cell.js"
 
 function FullTable() {
     const [checkboxes, setchecks] = useState(Array(3).fill(false))
-    console.log(typeof window !== 'undefined')
+    // console.log(typeof window !== 'undefined')
     
     
     if (typeof window !== 'undefined') {
@@ -32,9 +32,9 @@ function FullTable() {
         
     }, [])
     useEffect(() => {
-        console.log(localStorage.getItem('userID'))
+        // console.log(localStorage.getItem('userID'))
         localStorage.setItem('userID', JSON.stringify(checkboxes))
-        console.log(localStorage.getItem('userID'))
+        // console.log(localStorage.getItem('userID'))
     }, [checkboxes])
 
     const handleClick = (i) => {
@@ -50,7 +50,7 @@ function FullTable() {
 
     const renderCell = (i) => {
         return <Cell
-            value={checkboxes}
+            value={checkboxes[i]}
             onClick={() => {
                 handleClick(i)
                 
